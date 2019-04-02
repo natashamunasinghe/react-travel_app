@@ -23,7 +23,7 @@ const styles = theme => ({
     color: "textPrimary",
     fontSize: "2.5rem",
     textAlign: "center",
-    paddingBottom: theme.spacing.unit * 2
+    paddingBottom: theme.spacing.unit * 4
   }
 });
 

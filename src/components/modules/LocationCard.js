@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 import { withStyles } from "@material-ui/core/styles";
 import classnames from "classnames";
 import Card from "@material-ui/core/Card";
@@ -13,6 +14,9 @@ import Typography from "@material-ui/core/Typography";
 import red from "@material-ui/core/colors/red";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
+import ButtonComponent from "../modules/ButtonComponent";
+
+const MyLink = props => <Link to={this.props.match.params} {...props} />;
 
 const styles = theme => ({
   card: {
@@ -69,6 +73,9 @@ class LocationCard extends React.Component {
             cook together with your guests. Add 1 cup of frozen peas along with
             the mussels, if you like.
           </Typography>
+        </CardContent>
+        <CardContent>
+          <ButtonComponent component={MyLink} />
         </CardContent>
         <CardActions className={classes.actions} disableActionSpacing>
           <IconButton

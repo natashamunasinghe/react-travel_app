@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import patagonia from "./../../images/patagonia.jpg";
 import LocationGrid from "./../modules/LocationGrid";
 
 const HeaderImg = styled.img.attrs({
@@ -14,7 +13,11 @@ class HomePage extends Component {
   render() {
     return (
       <div>
-        <HeaderImg img src={patagonia} alt="patagonia" />
+        <HeaderImg
+          img
+          src="https://s3-ap-southeast-2.amazonaws.com/reactchileapp/patagonia.jpg"
+          alt="patagonia"
+        />
         <LocationGrid />
       </div>
     );
