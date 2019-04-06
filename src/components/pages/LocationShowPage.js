@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
-import Paper from "@material-ui/core/Paper";
-import LocationCard from "./../modules/LocationCard";
 
 const styles = theme => ({
   pageWrapper: {
@@ -11,13 +9,15 @@ const styles = theme => ({
 });
 
 class LocationShowPage extends Component {
+  // state = { location: this.props.locations[this.props.match.params.id] };
+
   render() {
-    const { classes } = this.props;
+    const { classes, locations } = this.props;
+
     return (
       <div>
-        <div className={classes.pageWrapper}>
-          <LocationCard />
-        </div>
+        <div className={classes.pageWrapper} />
+        <div>still working on this bit!</div>
       </div>
     );
   }

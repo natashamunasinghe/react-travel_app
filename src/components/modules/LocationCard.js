@@ -1,6 +1,6 @@
 import React from "react";
+import { withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
 import { withStyles } from "@material-ui/core/styles";
 import classnames from "classnames";
 import Card from "@material-ui/core/Card";
@@ -8,19 +8,18 @@ import CardHeader from "@material-ui/core/CardHeader";
 import CardMedia from "@material-ui/core/CardMedia";
 import CardContent from "@material-ui/core/CardContent";
 import CardActions from "@material-ui/core/CardActions";
+import CardActionArea from "@material-ui/core/CardActionArea";
 import Collapse from "@material-ui/core/Collapse";
 import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
-import red from "@material-ui/core/colors/red";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
 import ButtonComponent from "../modules/ButtonComponent";
 
-const MyLink = props => <Link to={this.props.match.params} {...props} />;
-
 const styles = theme => ({
   card: {
-    maxWidth: 400
+    maxWidth: 500
+    // marginLeft: 20
   },
   media: {
     height: 0,
@@ -48,34 +47,33 @@ class LocationCard extends React.Component {
     this.setState(state => ({ expanded: !state.expanded }));
   };
 
+  onCardClick = () => {
+    const { _id } = this.props;
+    this.props.history.push(`/locations/chile/${_id}`);
+  };
+
   render() {
-    const { classes } = this.props;
+    const { classes, bodyText, title, subheader, image } = this.props;
 
     return (
       <Card className={classes.card}>
-        <CardHeader
-          action={
-            <IconButton>
-              <MoreVertIcon />
-            </IconButton>
-          }
-          title="Shrimp and Chorizo Paella"
-          subheader="September 14, 2016"
-        />
-        <CardMedia
-          className={classes.media}
-          image="/static/images/cards/paella.jpg"
-          title="Paella dish"
-        />
+        <CardActionArea onCardClick={this.onCardClick}>
+          <CardHeader
+            action={
+              <IconButton>
+                <MoreVertIcon />
+              </IconButton>
+            }
+            title={title}
+            subheader={subheader}
+          />
+          <CardMedia className={classes.media} image={image} />
+          <CardContent>
+            <Typography>{bodyText}</Typography>
+          </CardContent>
+        </CardActionArea>
         <CardContent>
-          <Typography component="p">
-            This impressive paella is a perfect party dish and a fun meal to
-            cook together with your guests. Add 1 cup of frozen peas along with
-            the mussels, if you like.
-          </Typography>
-        </CardContent>
-        <CardContent>
-          <ButtonComponent component={MyLink} />
+          <ButtonComponent />
         </CardContent>
         <CardActions className={classes.actions} disableActionSpacing>
           <IconButton
@@ -130,4 +128,4 @@ LocationCard.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(LocationCard);
+export default withStyles(styles)(withRouter(LocationCard));
